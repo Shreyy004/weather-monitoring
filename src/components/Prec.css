@@ -1,0 +1,543 @@
+
+  
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    background-color: #1b2838;
+    font-family: Arial, sans-serif;
+    color: white;
+    width: 800px;
+    height: 675px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    padding: 10px;
+  }
+  
+  /* Wind panel takes full height */
+  .wind-panel {
+    grid-row: 1 / span 4;
+    display: flex;
+    flex-direction: column;
+    height: 91.7%;
+  }
+  
+  /* Right side panels container */
+  .right-panels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .panel {
+    background-color: #243447;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .panel-header h2 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    color: #aaa;
+  }
+  
+  .info-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    color: #aaa;
+    cursor: pointer;
+  }
+  
+  .value {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 6px 0;
+  }
+  
+  .unit {
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaa;
+  }
+  
+  .info-text {
+    margin-top: auto;
+    font-size: 11px;
+    color: #aaa;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  
+  .label {
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #5d9cec;
+    padding: 4px 12px;
+    border-radius: 30px;
+    align-self: flex-start;
+    margin: 5px 0 15px 0;
+  }
+  
+  /* Wind Turbines Animation */
+  .wind-turbines {
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+    margin: 10px 0 20px 0;
+  }
+  
+  .turbine {
+    position: relative;
+    height: 100%;
+    width: 24px;
+  }
+  
+  .turbine-tower {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 55px;
+    background-color: #e6e6e6;
+    border-radius: 2px;
+  }
+  
+  .turbine-blades {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #e6e6e6;
+    border-radius: 50%;
+    transform-origin: center;
+    transition: transform 0.05s linear;
+  }
+  
+  .blade {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: 0 center;
+    width: 24px;
+    height: 3px;
+    background-color: #c5e1a5;
+    border-radius: 3px;
+  }
+  
+  .blade-1 {
+    transform: rotate(0deg) translateX(3px);
+  }
+  
+  .blade-2 {
+    transform: rotate(120deg) translateX(3px);
+  }
+  
+  .blade-3 {
+    transform: rotate(240deg) translateX(3px);
+  }
+  
+  /* Updated Gust section */
+  .gust-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 20px 0;
+    width: 100%;
+  }
+  
+  .gust-container, .direction-container {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+  
+  .gust-container h3, .direction-container h3 {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+    color: #aaa;
+  }
+  
+  .gust-animation {
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .gust-line {
+    height: 2px;
+    width: 20px;
+    background-color: white;
+    margin-right: 5px;
+  }
+  
+  .gust-value, .direction-value {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  
+  .direction-arrow {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+  }
+  
+  /* Cloud Animation */
+  .clouds-container {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .animated-clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 200 40"><path d="M30,30 Q40,20 50,30 T70,30 T90,30 T110,30 T130,30 T150,30" fill="none" stroke="white" stroke-width="15" stroke-linecap="round"/></svg>');
+    background-repeat: repeat-x;
+    transition: left 0.005s linear;
+  }
+  
+  /* Visibility section */
+  .visibility-container {
+    margin-top: 15px;
+  }
+  
+  .visibility-container h3 {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0 0 5px 0;
+    color: #aaa;
+  }
+  
+  .visibility-value {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* Precipitation Animation */
+  .precipitation-animation {
+    position: relative;
+    height: 70px;
+    width: 70px;
+    margin: 5px auto;
+  }
+  
+  .precipitation-cloud {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: #e6e6e6;
+    border-radius: 15px;
+    margin: 0 auto;
+  }
+  
+  .rain-drops {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+  }
+  
+  .rain-drops::before,
+  .rain-drops::after,
+  .rain-drops .drop-1,
+  .rain-drops .drop-2,
+  .rain-drops .drop-3,
+  .rain-drops .drop-4,
+  .rain-drops .drop-5 {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 8px;
+    background-color: #5d9cec;
+    border-radius: 1.5px;
+    animation: rain-fall 1.5s infinite;
+  }
+  
+  .rain-drops::before { left: 10%; animation-delay: 0s; }
+  .rain-drops::after { left: 30%; animation-delay: 0.2s; }
+  .rain-drops .drop-1 { left: 50%; animation-delay: 0.4s; }
+  .rain-drops .drop-2 { left: 70%; animation-delay: 0.6s; }
+  .rain-drops .drop-3 { left: 90%; animation-delay: 0.8s; }
+  .rain-drops .drop-4 { left: 20%; animation-delay: 0.5s; }
+  .rain-drops .drop-5 { left: 60%; animation-delay: 0.3s; }
+  
+  .rain-drops.drops-0::before { top: 5px; }
+  .rain-drops.drops-0::after { top: 15px; }
+  .rain-drops.drops-1::before { top: 15px; }
+  .rain-drops.drops-1::after { top: 5px; }
+  
+  @keyframes rain-fall {
+    0% { transform: translateY(-5px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(20px); opacity: 0; }
+  }
+  
+  .orange-dots {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 100%;
+    height: 16px;
+  }
+  
+  .orange-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #e6995e;
+    border-radius: 50%;
+  }
+  
+  .orange-dot.dot-1 {
+    top: 0;
+    right: 8px;
+  }
+  
+  .orange-dot.dot-2 {
+    top: 4px;
+    right: 20px;
+  }
+  
+  /* Pressure Gauge */
+  .pressure-gauge {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+  }
+  
+  .gauge-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(to right, #4caf50, #ffeb3b, #f44336);
+    clip-path: polygon(50% 50%, 0 0, 30% 0, 50% 0, 70% 0, 100% 0, 100% 30%, 100% 50%);
+    transform: rotate(-40deg);
+  }
+  
+  .gauge-needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 3px;
+    background-color: #f44336;
+    transform: rotate(75deg);
+    transform-origin: left center;
+    border-radius: 3px;
+    z-index: 2;
+  }
+  
+  .gauge-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #424242;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  
+  .gauge-marks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .gauge-mark {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 2px;
+    height: 8px;
+    background-color: #e0e0e0;
+    transform-origin: center 52px;
+  }
+  
+  .gauge-values {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 8px;
+    color: #e0e0e0;
+  }
+  
+  .gauge-value {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+  
+  .pressure-label {
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #e57373;
+    padding: 3px 8px;
+    border-radius: 16px;
+    margin: 8px auto;
+    text-align: center;
+    width: max-content;
+  }
+  
+  .pressure-scale {
+    margin: 12px 0;
+  }
+  
+  .scale-bar {
+    height: 6px;
+    background: linear-gradient(to right, #4caf50, #ffeb3b, #f44336);
+    border-radius: 3px;
+    position: relative;
+  }
+  
+  .scale-marker {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 2px solid #424242;
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* UV Index */
+  .uv-sun {
+    width: 60px;
+    height: 60px;
+    margin: 8px auto;
+    position: relative;
+  }
+  
+  .sun-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: #ffeb3b;
+    border-radius: 50%;
+  }
+  
+  .sun-rays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(255,235,59,0.3) 0%, rgba(255,235,59,0) 70%);
+  }
+  
+  .uv-label {
+    text-align: center;
+    margin: 4px 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .uv-scale {
+    margin: 12px 0;
+  }
+  
+  .scale-label {
+    text-align: center;
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 850px) {
+    .dashboard {
+      width: 600px;
+      height: 450px;
+    }
+    
+    .value {
+      font-size: 24px;
+    }
+    
+    .info-text {
+      font-size: 10px;
+    }
+  }
+  
+  @media (max-width: 650px) {
+    .dashboard {
+      grid-template-columns: 1fr;
+      width: 90%;
+      height: auto;
+    }
+    
+    .wind-panel {
+      grid-row: auto;
+    }
+    
+    .right-panels {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .gust-row {
+      flex-direction: column;
+    }
+    
+    .gust-container, .direction-container {
+      margin-bottom: 8px;
+      width: 100%;
+    }
+  }
+  
+
+  .panel {
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
+  }
+  
+  .panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
